@@ -19,16 +19,22 @@ jobs:
     - name: Clone GoogleTest manually
       run: |
         git clone --depth 1 https://github.com/google/googletest.git external/googletest
+  
+    - name: Configure CMake
+      run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+      shell: pwsh
 
+    - name: Build project and tests
+      run: cmake --build build --config Debug --target ALL_BUILD -j 10
+      shell: pwsh
 
-    - name: Build with CMake
-      run: |
-        mkdir build
-        cmake -S . -B build
-        cmake --build ./build --config Debug --target MyProject -j 10 --
-        ./build/MyProject
-        cmake --build ./build --config Debug --target tests -j 10 --
-        build/bin/tests --gtest_output=xml:output.xml
+    - name: Run main application
+      run: .\build\Debug\MyProject.exe
+      shell: pwsh
+
+    - name: Run unit tests
+      run: .\build\Debug\tests.exe --gtest_output=xml:output.xml
+      shell: pwsh
 
    # - name: Zip compiled binaries
    #   if: github.event_name == 'push' 
