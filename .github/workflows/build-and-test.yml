@@ -16,19 +16,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Install Conan
-      run: choco install conan -y
-
-    - name: Add Cppcheck to PATH
+    - name: Clone GoogleTest manually
       run: |
-        echo "C:\ProgramData\chocolatey\bin" | Out-File -Append -Encoding ascii $env:GITHUB_PATH
+        git clone --depth 1 https://github.com/google/googletest.git external/googletest
 
-    # Check if Conan is successfully installed
-    - name: Check Conan installation
-      run: conan --version
-
-    - name: Install dependencies using Conan
-      run: conan install . --build=missing
 
     - name: Build with CMake
       run: |
