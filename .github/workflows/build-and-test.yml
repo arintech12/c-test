@@ -25,6 +25,12 @@ jobs:
         mkdir build
         cmake -S . -B build
         cmake --build ./build --config Debug --target MyProject -j 10 --
+
+    - name: Run built executable
+      run: |
+        .\build\Debug\MyProject.exe
+      shell: pwsh
+
     #    ./build/MyProject
     #    cmake --build ./build --config Debug --target tests -j 10 --
     #    build/bin/tests --gtest_output=xml:output.xml
