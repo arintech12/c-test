@@ -31,6 +31,11 @@ jobs:
         .\build\Debug\MyProject.exe
       shell: pwsh
 
+    - name: Build with CMake
+      run: |
+        mkdir build
+        cmake --build ./build --config Debug --target tests -j 10 --
+
     #    ./build/MyProject
     #    cmake --build ./build --config Debug --target tests -j 10 --
     #    build/bin/tests --gtest_output=xml:output.xml
