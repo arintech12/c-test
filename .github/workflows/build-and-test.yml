@@ -33,7 +33,6 @@ jobs:
 
     - name: Build with CMake
       run: |
-        mkdir build
         cmake --build ./build --config Debug --target tests -j 10 --
 
     #    ./build/MyProject
