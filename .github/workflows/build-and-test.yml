@@ -21,8 +21,12 @@ jobs:
 
     - name: Add Cppcheck to PATH
       run: |
-        echo "C:\Program Files\Conan" | Out-File -Append -Encoding ascii $env:GITHUB_PATH
-    
+        echo "C:\ProgramData\chocolatey\bin" | Out-File -Append -Encoding ascii $env:GITHUB_PATH
+
+    # Check if Conan is successfully installed
+    - name: Check Conan installation
+      run: conan --version
+
     - name: Install dependencies using Conan
       run: conan install . --build=missing
 
