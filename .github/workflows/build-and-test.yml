@@ -23,6 +23,7 @@ jobs:
     - name: Compile source code
       run: |
         mkdir build
+        conan install . --build=missing 
         cmake -S . -B build
         cmake --build ./build --config Debug --target MyProject -j 10 --
 
