@@ -23,6 +23,7 @@ jobs:
     - name: Compile source code
       run: |
         mkdir build
+        cmake -S . -B build
         cmake --build ./build --config Debug --target MyProject -j 10 --
 
    # - name: Zip compiled binaries
