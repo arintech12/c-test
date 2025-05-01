@@ -26,6 +26,7 @@ jobs:
         cmake -S . -B build
         cmake --build ./build --config Debug --target MyProject -j 10 --
         ./build/MyProject
+        cmake --build ./build --config Debug --target tests -j 10 --
         build/bin/tests --gtest_output=xml:output.xml
 
    # - name: Zip compiled binaries
