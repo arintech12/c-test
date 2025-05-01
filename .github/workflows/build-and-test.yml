@@ -25,6 +25,8 @@ jobs:
         mkdir build
         cmake -S . -B build
         cmake --build ./build --config Debug --target MyProject -j 10 --
+        ./build/MyProject
+        ctest
 
    # - name: Zip compiled binaries
    #   if: github.event_name == 'push' 
