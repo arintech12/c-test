@@ -48,11 +48,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Install gTest
-      run: conan install . -pr=myprofile
+    - name: Run test
+      run: ctest
 
-    - name: Complie
-      run: cmake --build ./build --config Debug --target tests -j 10 --
 
         
   #release:
