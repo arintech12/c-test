@@ -21,7 +21,9 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y build-essential
 
     - name: Compile source code
-      run: cmake --build ./build --config Debug --target MyProject -j 10 --
+      run: |
+        mkdir build
+        cmake --build ./build --config Debug --target MyProject -j 10 --
 
    # - name: Zip compiled binaries
    #   if: github.event_name == 'push' 
