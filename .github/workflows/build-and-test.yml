@@ -25,11 +25,10 @@ jobs:
         refreshenv
         conan --version
         conan profile detect
+        conan install . --build=gtest
         conan install .
       shell: pwsh
     
-    - name: Install dependencies using Conan
-      run: conan install . -pr=myprofile
 
     - name: Build with CMake
       run: |
