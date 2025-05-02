@@ -19,16 +19,13 @@ jobs:
     - name: Install Conan
       run: choco install conan -y
 
-    - name: Add Cppcheck to PATH
-      run: |
-        echo "C:\Program Files\conan" | Out-File -Append -Encoding ascii $env:GITHUB_PATH
-
     - name: Install dependencies using Conan
       run: |
         Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
         refreshenv
         conan --version
-        conan install . --profile:build=<myprofile>
+        conan profile detect
+        conan install . -pr=myprofile
       shell: pwsh
     
     - name: Install dependencies using Conan
