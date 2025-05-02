@@ -25,6 +25,7 @@ jobs:
 
     - name: Install dependencies using Conan
       run: |
+        Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
         refreshenv
         conan --version
       shell: pwsh
