@@ -24,6 +24,12 @@ jobs:
         echo "C:\Program Files\conan" | Out-File -Append -Encoding ascii $env:GITHUB_PATH
 
     - name: Install dependencies using Conan
+      run: |
+        refreshenv
+        conan --version
+      shell: pwsh
+    
+    - name: Install dependencies using Conan
       run: conan install . -pr=myprofile
 
     - name: Build with CMake
