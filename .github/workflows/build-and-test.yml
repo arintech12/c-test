@@ -38,7 +38,7 @@ jobs:
 
     - name: Run built executable
       run: |
-        .\build\Debug\MyProject.exe
+        .\build\bin\MyProject.exe
       shell: pwsh
 
     - name: Build with CMake
